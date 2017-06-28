@@ -1,0 +1,30 @@
+.nav ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+ul li{
+    background-color: #F3F3F3;
+    padding: 20px;
+    position: relative;
+}
+li > div{
+    background-color: green;
+    position: absolute;
+    top: 80px;
+    display: none;
+}
+li > ul{
+    border: 1px solid black;
+    flex-direction: column;
+}
+
+.mobile-nav{
+    display: none;
+}
+
+/*id styles*/
+#showSubNav{
+    display: block;
+}
