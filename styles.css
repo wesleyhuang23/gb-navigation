@@ -8,6 +8,7 @@ ul li{
     background-color: #F3F3F3;
     padding: 20px;
     position: relative;
+    cursor: pointer;
 }
 li > div{
     background-color: green;
