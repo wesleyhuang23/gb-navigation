@@ -12,5 +12,22 @@
             e.target.children[0].style.display = 'none';
         }
     }
-    console.log(navItems);
 })();
+
+function addItem(){
+    var inputItem = document.createElement('input');
+    var button = document.createElement('button');
+    button.innerText = 'Remove Item';
+    button.onclick = function(){
+        var form = document.getElementsByClassName('form')[0];
+        form.removeChild(form.children[form.children.length - 1])
+        form.removeChild(form.children[form.children.length - 1])
+    }
+    var form = document.getElementsByClassName('form')[0]
+    form.appendChild(inputItem);
+    form.appendChild(button);
+}
+
+function addNav(e){
+    console.log(e);
+}
