@@ -77,3 +77,41 @@ function createNav(name, items, links){
     navItems.appendChild(outList);
     hover(); //gives the new nav the hover effect
 }
+
+//cruding the navigation
+function showNav(){
+    var navItems = document.getElementsByClassName('nav-items')[0].children;
+    var crud = document.getElementsByClassName('crud')[0];
+    for(var i = 0; i < navItems.length; i++){
+        var container = document.createElement('div');
+        var edit = document.createElement('button');
+        var remove = document.createElement('button');
+        var span = document.createElement('span');
+        container.id = navItems[i].children[0].className;
+        span.innerText = navItems[i].children[0].className;
+        edit.innerHTML = 'edit';
+        edit.className = navItems[i].children[0].className;
+        remove.innerHTML = 'delete';
+        remove.className = 'del-' + navItems[i].children[0].className;
+        remove.onclick = function(e){
+            console.log(e);
+            var navItems = document.getElementsByClassName('nav-items')[0]
+            console.log(navItems);
+            var name = e.target.className.slice(4, e.target.className.length);
+            console.log(name);
+            for(var i = 0; i < navItems.children.length; i++){
+                console.log(navItems.children[i].children[0].className, name);
+                if(navItems.children[i].children[0].className === name){
+                    navItems.removeChild(navItems.children[i]);
+                }
+            }
+            var containerToRemove = document.getElementById(name);
+            crud.removeChild(containerToRemove)
+        }
+        container.appendChild(span);
+        container.appendChild(edit);
+        container.appendChild(remove);
+        crud.appendChild(container);
+    }
+}
+showNav();
