@@ -38,10 +38,8 @@ function addItem(){
 }
 
 function addNav(e){
-    console.log(e.target.parentNode.children);
     var children = e.target.parentNode.children;
     var navName = document.getElementById('navName').value;
-    console.log(navName);
     let subNav = [];
     let links = [];
     for(var i = 0; i < children.length; i++){
@@ -51,8 +49,8 @@ function addNav(e){
             links.push(children[i])
         }
     }
-    console.log(subNav)
     createNav(navName, subNav, links);
+    showNav();
 }
 
 function createNav(name, items, links){
