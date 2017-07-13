@@ -56,7 +56,6 @@ function addNav(e){
 }
 
 function createNav(name, items, links){
-    console.log(name, items);
     var outList = document.createElement('li'); //outerlist
     outList.innerText = name;
     var container = document.createElement('div'); //div holding the sub items
@@ -70,7 +69,6 @@ function createNav(name, items, links){
         aTag.appendChild(subItem);
         innerList.appendChild(aTag);
     }
-    console.log(innerList);
     container.appendChild(innerList);
     outList.appendChild(container);
     var navItems = document.getElementsByClassName('nav-items')[0];
@@ -84,9 +82,19 @@ function showNav(){
     var crud = document.getElementsByClassName('crud')[0];
     for(var i = 0; i < navItems.length; i++){
         var container = document.createElement('div');
+        var childContainer = document.createElement('div');
         var edit = document.createElement('button');
         var remove = document.createElement('button');
         var span = document.createElement('span');
+        for(var j = 0; j < navItems[i].children[0].children.length; j++){
+            var subList = navItems[i].children[0].children[j];
+            for(var a = 0; a < subList.children.length; a++){
+                var list = document.createElement('p');
+                list.innerHTML = subList.children[a].innerHTML;
+                childContainer.appendChild(list);
+            }
+        }
+        //parent logic
         container.id = navItems[i].children[0].className;
         span.innerText = navItems[i].children[0].className;
         edit.innerHTML = 'edit';
@@ -94,13 +102,9 @@ function showNav(){
         remove.innerHTML = 'delete';
         remove.className = 'del-' + navItems[i].children[0].className;
         remove.onclick = function(e){
-            console.log(e);
             var navItems = document.getElementsByClassName('nav-items')[0]
-            console.log(navItems);
             var name = e.target.className.slice(4, e.target.className.length);
-            console.log(name);
             for(var i = 0; i < navItems.children.length; i++){
-                console.log(navItems.children[i].children[0].className, name);
                 if(navItems.children[i].children[0].className === name){
                     navItems.removeChild(navItems.children[i]);
                 }
@@ -109,6 +113,7 @@ function showNav(){
             crud.removeChild(containerToRemove)
         }
         container.appendChild(span);
+        container.appendChild(childContainer);
         container.appendChild(edit);
         container.appendChild(remove);
         crud.appendChild(container);
